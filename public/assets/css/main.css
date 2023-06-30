@@ -56,4 +56,11 @@
     width: 90%;
     margin: 20vh auto;
   }
+}
+
+.container-mostrar-bono {
+  margin-top: 50px;
+}
+.container-mostrar-bono #bonoInfo {
+  margin-top: 20px;
 }/*# sourceMappingURL=main.css.map */

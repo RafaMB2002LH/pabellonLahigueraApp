@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/mostrarBono.js') }}"></script>
+{% endblock %}
+{% block body %}
+	<div class="container-mostrar-bono">
+		<h1>Bono de
+			{{ usuario.nombre }}
+			{{ usuario.apellidos }}</h1>
+
+		<div id="bonoInfo">
+			<h2>Tipo de bono:
+				{{ bono.tipo }}</h2>
+			<p>Precio:
+				{{ bono.precio }}</p>
+			<p>Días totales:
+				{{ bono.diasTotales }}</p>
+		</div>
+	</div>
+{% endblock %}

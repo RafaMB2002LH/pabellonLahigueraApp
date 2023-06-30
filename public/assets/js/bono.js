@@ -43,7 +43,7 @@ $(document).ready(function () {
 
     function updateBonoType() {
         var bonoType = isDoubleBono ? 'Bono Doble' : 'Bono Simple';
-        $('.card-title').text('Cliente: Juan Pérez - ' + bonoType);
+        $('.card-title').text('Cliente: Rafael Montoro - ' + bonoType);
     }
 
     function resetDayMarks() {

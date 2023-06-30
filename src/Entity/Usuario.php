@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UsuarioRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -52,6 +54,14 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 10, nullable: true)]
     private ?string $Sexo = null;
+
+    #[ORM\OneToMany(mappedBy: 'Usuario', targetEntity: Bono::class)]
+    private Collection $bonos;
+
+    public function __construct()
+    {
+        $this->bonos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -178,6 +188,36 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     public function setSexo(?string $Sexo): static
     {
         $this->Sexo = $Sexo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Bono>
+     */
+    public function getBonos(): Collection
+    {
+        return $this->bonos;
+    }
+
+    public function addBono(Bono $bono): static
+    {
+        if (!$this->bonos->contains($bono)) {
+            $this->bonos->add($bono);
+            $bono->setUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBono(Bono $bono): static
+    {
+        if ($this->bonos->removeElement($bono)) {
+            // set the owning side to null (unless already changed)
+            if ($bono->getUsuario() === $this) {
+                $bono->setUsuario(null);
+            }
+        }
 
         return $this;
     }
