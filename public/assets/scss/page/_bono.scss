@@ -1,0 +1,68 @@
+.container-bono {
+    .card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        border: 2px solid blue;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .card-info {
+        text-align: center;
+    }
+
+    .card-img-top {
+        height: 150px;
+        object-fit: contain;
+        margin-bottom: 10px;
+    }
+
+    .card-title {
+        margin-bottom: 5px;
+    }
+
+    .card-subtitle {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+
+    .card-days {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .day-markers {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .day-marker {
+        width: 20px;
+        height: 20px;
+        border: 1px solid blue;
+        margin: 0 5px 5px 0;
+    }
+
+    .day-marked {
+        background-color: blue;
+    }
+
+    @media (min-width: 576px) {
+        .card {
+            width: 400px;
+            margin: 20px auto;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .card {
+            width: 90%;
+            margin: 20vh auto;
+        }
+    }
+
+}

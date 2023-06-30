@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bono de Gimnasio
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/bono.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<div class="container-bono">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="card">
+					<div class="card-body">
+						<div class="card-info">
+							<img class="card-img-top" src="escudo_pueblo.png" alt="Escudo del pueblo">
+							<h5 class="card-title">Cliente: Juan Pérez</h5>
+							<p class="card-subtitle">Polideportivo Municipal Lahiguera - Bono Musculación</p>
+							<p class="card-text">Precio: $50</p>
+							<p class="card-days" id="days-left">Días Restantes: 10</p>
+						</div>
+						<div class="day-markers">
+							<div class="day-marker" id="day-1"></div>
+							<div class="day-marker" id="day-2"></div>
+							<div class="day-marker" id="day-3"></div>
+							<div class="day-marker" id="day-4"></div>
+							<div class="day-marker" id="day-5"></div>
+							<div class="day-marker" id="day-6"></div>
+							<div class="day-marker" id="day-7"></div>
+							<div class="day-marker" id="day-8"></div>
+							<div class="day-marker" id="day-9"></div>
+							<div class="day-marker" id="day-10"></div>
+						</div>
+					</div>
+				</div>
+				<div class="text-center">
+					<button class="btn btn-primary mt-3" id="mark-day-btn">Marcar Día</button>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

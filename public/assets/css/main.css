@@ -1,0 +1,59 @@
+@import "../css/bootstrap-reboot.min.css";
+@import "../css/bootstrap-grid.min.css";
+@import "../css/bootstrap-utilities.min.css";
+@import "../css/bootstrap.min.css";
+.container-bono .card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 2px solid blue;
+  border-radius: 5px;
+  padding: 10px;
+}
+.container-bono .card-info {
+  text-align: center;
+}
+.container-bono .card-img-top {
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+.container-bono .card-title {
+  margin-bottom: 5px;
+}
+.container-bono .card-subtitle {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.container-bono .card-days {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.container-bono .day-markers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.container-bono .day-marker {
+  width: 20px;
+  height: 20px;
+  border: 1px solid blue;
+  margin: 0 5px 5px 0;
+}
+.container-bono .day-marked {
+  background-color: blue;
+}
+@media (min-width: 576px) {
+  .container-bono .card {
+    width: 400px;
+    margin: 20px auto;
+  }
+}
+@media (max-width: 576px) {
+  .container-bono .card {
+    width: 90%;
+    margin: 20vh auto;
+  }
+}/*# sourceMappingURL=main.css.map */
