@@ -22,10 +22,10 @@ class Bono
     #[ORM\Column]
     private ?float $Precio = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $DiasTotales = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $FechaCreacion = null;
 
     #[ORM\ManyToOne(inversedBy: 'bonos')]
@@ -37,6 +37,7 @@ class Bono
     public function __construct()
     {
         $this->diaTachados = new ArrayCollection();
+        $this->FechaCreacion = new \DateTime();
     }
 
     public function getId(): ?int
@@ -75,7 +76,7 @@ class Bono
 
     public function setDiasTotales(int $DiasTotales): static
     {
-        $this->DiasTotales = $DiasTotales;
+        $this->DiasTotales = ($this->Tipo === 'simple') ? 10 : 20;
 
         return $this;
     }
@@ -132,5 +133,10 @@ class Bono
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->id;
     }
 }

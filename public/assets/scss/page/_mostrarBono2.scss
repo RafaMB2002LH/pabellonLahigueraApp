@@ -1,0 +1,61 @@
+.container-mostrar-bono-2 {
+  .card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .cuadrado {
+      position: relative;
+      /* Agregamos posición relativa al cuadrado */
+
+      width: 100px;
+      height: 100px;
+      background-color: blue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 5px;
+
+      &.tachado {
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: transparent;
+          /* Cambiamos el fondo a transparente */
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          background-color: white;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%) rotate(45deg);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          background-color: white;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%) rotate(-45deg);
+        }
+      }
+    }
+
+    .numero {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+}

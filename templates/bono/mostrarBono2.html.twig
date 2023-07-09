@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="container-mostrar-bono-2">
+    <div class="card">
+      <div class="card-header">
+        <img src="{{ asset('path/to/shield.png') }}" alt="Escudo del gimnasio" class="card-img-top">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ bono.usuario.Nombre }} {{ bono.usuario.Apellidos }}</h5>
+        <p class="card-text">Tipo de bono: {{ bono.Tipo }}</p>
+        <p class="card-text">Precio: {{ bono.Precio }}</p>
+        <p class="card-text">Días restantes: {{ bono.DiasTotales - bono.diaTachados|length }}</p>
+        <div class="d-flex flex-wrap justify-content-center">
+          {% set tachados = bono.diaTachados|length %}
+          {% for i in 1..bono.DiasTotales %}
+            <div class="cuadrado{% if loop.index <= tachados %} tachado{% endif %}">
+              <span class="numero">{{ i }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

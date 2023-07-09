@@ -20,6 +20,11 @@ class DiaTachado
     #[ORM\ManyToOne(inversedBy: 'diaTachados')]
     private ?Bono $Bono = null;
 
+    public function __construct()
+    {
+        $this->Fecha = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,5 +52,10 @@ class DiaTachado
         $this->Bono = $Bono;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->id;
     }
 }

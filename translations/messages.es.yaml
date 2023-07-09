@@ -1,0 +1,5 @@
+security:
+  authentication:
+    error:
+      Invalid credentials: "Credenciales inválidas."
+      User account is disabled: "La cuenta de usuario está desactivada."

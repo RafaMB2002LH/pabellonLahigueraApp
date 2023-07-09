@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Bono;
 use App\Repository\BonoRepository;
 use App\Repository\UsuarioRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -44,6 +45,16 @@ class BonoController extends AbstractController
         // Renderizar la plantilla con los datos del bono
         return $this->render('bono/mostrarBono.html.twig', [
             'usuario' => $usuario,
+            'bono' => $bono,
+        ]);
+    }
+
+    #[Route('/bono3', name: 'app_bono3')]
+    public function show(): Response
+    {
+        $usuario = $this->usuarioRepository->find(1);
+        $bono = $usuario->getBonos()->last();
+        return $this->render('bono/mostrarBono2.html.twig', [
             'bono' => $bono,
         ]);
     }

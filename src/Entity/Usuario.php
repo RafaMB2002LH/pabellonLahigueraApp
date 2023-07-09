@@ -31,7 +31,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @var string The hashed password
      */
-    #[ORM\Column]
+    #[ORM\Column(length:500)]
     #[Assert\NotBlank(message: "El campo 'Contraseña' no puede estar vacío.")]
     private ?string $password = null;
 
@@ -129,7 +129,7 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+         //$this->plainPassword = null;
     }
 
     public function getNombre(): ?string
@@ -220,5 +220,10 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->Nombre . " " . $this->Apellidos;
     }
 }

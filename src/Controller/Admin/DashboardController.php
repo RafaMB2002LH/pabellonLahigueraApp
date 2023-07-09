@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Bono;
+use App\Entity\DiaTachado;
 use App\Entity\Usuario;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -30,5 +31,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Usuario', 'fas fa-list', Usuario::class);
         yield MenuItem::linkToCrud('Bono', 'fas fa-list', Bono::class);
+        yield MenuItem::linkToCrud('Dia tachado', 'fas fa-list', DiaTachado::class);
     }
 }
