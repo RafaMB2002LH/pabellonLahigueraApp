@@ -3,6 +3,7 @@
 @import "../css/bootstrap-grid.min.css";
 @import "../css/bootstrap-utilities.min.css";
 @import "../css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Permanent+Marker&display=swap");
 .container-bono .card {
   display: flex;
   flex-direction: row;
@@ -66,21 +67,25 @@
   margin-top: 20px;
 }
 
+.container-mostrar-bono-2 {
+  background-color: #C2F6FF;
+}
 .container-mostrar-bono-2 .card {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-color: #C2F6FF;
 }
 .container-mostrar-bono-2 .card .cuadrado {
   position: relative;
   /* Agregamos posición relativa al cuadrado */
   width: 100px;
   height: 100px;
-  background-color: blue;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 5px;
+  border: 5px solid black;
 }
 .container-mostrar-bono-2 .card .cuadrado.tachado::before, .container-mostrar-bono-2 .card .cuadrado.tachado::after {
   content: "";
@@ -88,14 +93,13 @@
   width: 100%;
   height: 100%;
   background-color: transparent;
-  /* Cambiamos el fondo a transparente */
 }
 .container-mostrar-bono-2 .card .cuadrado.tachado::before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 2px;
-  background-color: white;
+  height: 3px;
+  background-color: blue;
   top: 50%;
   left: 0;
   transform: translateY(-50%) rotate(45deg);
@@ -104,14 +108,50 @@
   content: "";
   position: absolute;
   width: 100%;
-  height: 2px;
-  background-color: white;
+  height: 3px;
   top: 50%;
+  background-color: blue;
   left: 0;
   transform: translateY(-50%) rotate(-45deg);
 }
 .container-mostrar-bono-2 .card .numero {
-  color: white;
-  font-size: 24px;
+  color: black;
+  font-size: 40px;
   font-weight: bold;
+}
+.container-mostrar-bono-2 .card-body .card-title {
+  font-size: 60px;
+}
+.container-mostrar-bono-2 .card-body .card-text {
+  font-size: 35px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container-mostrar-bono-2 .card-body .card-text-usuario {
+  font-size: 45px;
+  font-family: "Dancing Script", cursive;
+  text-decoration: underline;
+}
+.container-mostrar-bono-2 .card-body .card-text-t {
+  font-size: 60px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+.container-mostrar-bono-2 img {
+  width: 90px; /* Ajusta el ancho según tus necesidades */
+  height: auto; /* Para mantener la proporción de aspecto */
+}
+
+.container-listaUsuarios .input-group-icon .input-group-text {
+  height: 100%;
+}
+.container-listaUsuarios .btn-bono {
+  border: 2px solid black;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 16px;
+  background-color: #C2F6FF;
+}
+.container-listaUsuarios .btn-bono-text {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
 }/*# sourceMappingURL=main.css.map */

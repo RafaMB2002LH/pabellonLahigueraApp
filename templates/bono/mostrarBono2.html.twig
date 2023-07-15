@@ -1,25 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-  <div class="container-mostrar-bono-2">
-    <div class="card">
-      <div class="card-header">
-        <img src="{{ asset('path/to/shield.png') }}" alt="Escudo del gimnasio" class="card-img-top">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title">{{ bono.usuario.Nombre }} {{ bono.usuario.Apellidos }}</h5>
-        <p class="card-text">Tipo de bono: {{ bono.Tipo }}</p>
-        <p class="card-text">Precio: {{ bono.Precio }}</p>
-        <p class="card-text">Días restantes: {{ bono.DiasTotales - bono.diaTachados|length }}</p>
-        <div class="d-flex flex-wrap justify-content-center">
-          {% set tachados = bono.diaTachados|length %}
-          {% for i in 1..bono.DiasTotales %}
-            <div class="cuadrado{% if loop.index <= tachados %} tachado{% endif %}">
-              <span class="numero">{{ i }}</span>
-            </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="container-mostrar-bono-2">
+		<div class="card">
+			<div
+				class="card-header">
+				BONO
+			</div>
+			<div class="card-body d-flex flex-column align-items-center">
+				{% if bono %}
+					<h5 class="card-title text-center">POLIDEPORTIVO MUNICIPAL</h5>
+					<h5 class="card-text text-center">LAHIGUERA</h5>
+					<h2 class="card-text-t text-center">BONO MUSCULACION</h2>
+					<div class="escudo-lahiguera">
+						<img src="{{ asset('assets/images/EscudoLahiguera.svg.png') }}" alt="Escudo de Lahiguera">
+					</div>
+					<p class="card-text-usuario text-center">{{bono.Usuario.nombre}}
+						{{bono.Usuario.apellidos}}</p>
+					<p class="card-text text-center">Tipo de bono:
+						{{ bono.Tipo }}</p>
+					<p class="card-text text-center">Precio:
+						{{ (bono.Precio / 100)|number_format(0, '.', '') }}€</p>
+					<p class="card-text text-center">Días restantes:
+						{{ bono.DiasTotales - bono.diaTachados|length }}</p>
+					<div class="d-flex flex-wrap justify-content-center">
+						{% set tachados = bono.diaTachados|length %}
+						{% for i in 1..bono.DiasTotales %}
+							<div class="cuadrado{% if loop.index <= tachados %} tachado{% endif %}">
+								<span class="numero">{{ i }}</span>
+							</div>
+						{% endfor %}
+					</div>
+				{% else %}
+					<p class="text-center">Actualmente no dispones de ningún bono</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
 {% endblock %}

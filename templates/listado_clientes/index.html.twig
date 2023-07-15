@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/listadoUsuarios.js') }}"></script>
+{% endblock %}
+
+{% block title %}Listado de Usuarios
+{% endblock %}
+
+{% block body %}
+	<div class="container-listaUsuarios">
+		<h1>Listado de Usuarios</h1>
+
+		<div class="input-group mb-3">
+			<div class="input-group-prepend input-group-icon">
+				<span class="input-group-text d-flex align-items-center">
+					<i class="fas fa-search"></i>
+				</span>
+			</div>
+			<input type="text" id="buscar" class="form-control form-control-lg" placeholder="Buscar usuario...">
+		</div>
+		<div class="table-responsive">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Bono</th>
+						<th>Email</th>
+						<th>Nombre</th>
+						<th>Apellidos</th>
+						<th>DNI</th>
+						<!-- Agrega más columnas según tus necesidades -->
+					</tr>
+				</thead>
+				<tbody>
+					{% for usuario in usuarios %}
+						<tr>
+							<td>
+								<button class="btn btn-primary btn-bono" data-id="{{ usuario.id }}">
+									<span class="btn-bono-text">Bono</span>
+								</button>
+							</td>
+							<td>{{ usuario.email }}</td>
+							<td>{{ usuario.Nombre }}</td>
+							<td>{{ usuario.Apellidos }}</td>
+							<td>{{ usuario.DNI }}</td>
+							<!-- Agrega más columnas según tus necesidades -->
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+{% endblock %}

@@ -8,6 +8,7 @@ use App\Repository\UsuarioRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class BonoController extends AbstractController
 {
@@ -50,9 +51,25 @@ class BonoController extends AbstractController
     }
 
     #[Route('/bono3', name: 'app_bono3')]
-    public function show(): Response
+    public function show(Security $security): Response
     {
-        $usuario = $this->usuarioRepository->find(1);
+
+        $user = $security->getUser();
+        if ($user == null) {
+            return new Response("Necesitas iniciar sesion para acceder aqui");
+        } else {
+            $usuario = $this->usuarioRepository->find($user->getId());
+            $bono = $usuario->getBonos()->last();
+            return $this->render('bono/mostrarBono2.html.twig', [
+                'bono' => $bono,
+            ]);
+        }
+    }
+
+    #[Route('/bono3/{id}', name: 'app_bono3_id')]
+    public function bonoPorPersona($id): Response
+    {
+        $usuario = $this->usuarioRepository->find($id);
         $bono = $usuario->getBonos()->last();
         return $this->render('bono/mostrarBono2.html.twig', [
             'bono' => $bono,
