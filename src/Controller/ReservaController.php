@@ -47,8 +47,7 @@ class ReservaController extends AbstractController
 
         // Guardar la reserva en la base de datos
         $entityManager->persist($reserva);
-        $bicicleta = $bicicletaRepository->find($bikeId);
         $entityManager->flush();
-        return $this->json(['message' => 'Reserva creada correctamente']);
+        return $this->json(['message' => 'Reserva creada correctamente', 'idBicicleta' => $bikeId]);
     }
 }

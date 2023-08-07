@@ -286,7 +286,7 @@ p {
 }
 .container-spinning .bike-icon:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 .container-spinning .bike-icon .available {
   color: green;

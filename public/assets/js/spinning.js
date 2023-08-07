@@ -31,8 +31,7 @@ $(document).ready(function () {
                 bikeId: idBike
             },
             success: function (response) {
-                // Reserva exitosa, puedes redireccionar o actualizar la página según tus necesidades
-                location.reload();
+                $(".bike-icon i[data-id='" + response.idBicicleta + "']").addClass("reserved");
             },
             error: function (error) {
                 // Manejar errores
