@@ -3,12 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Bono;
+use App\Entity\DiaTachado;
 use App\Repository\BonoRepository;
 use App\Repository\UsuarioRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Serializer\Encoder\JsonDecode;
 
 class BonoController extends AbstractController
 {
@@ -56,7 +60,7 @@ class BonoController extends AbstractController
 
         $user = $security->getUser();
         if ($user == null) {
-            return new Response("Necesitas iniciar sesion para acceder aqui");
+            return $this->render('error/sinInicioDeSesion.html.twig', ['mensajeError' => 'Necesitas iniciar sesión para acceder a esta página.']);
         } else {
             $usuario = $this->usuarioRepository->find($user->getId());
             $bono = $usuario->getBonos()->last();
@@ -74,5 +78,20 @@ class BonoController extends AbstractController
         return $this->render('bono/mostrarBono2.html.twig', [
             'bono' => $bono,
         ]);
+    }
+
+    #[Route('/tacharDia', name: 'tachar_dia', methods: 'post')]
+    public function tacharDia(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $data = json_decode($request->getContent(), true);
+
+        $diaTachado = new DiaTachado();
+
+        $diaTachado->setBono($this->bonoRepository->find($data['bonoId']));
+
+        $entityManager->persist($diaTachado);
+        $entityManager->flush();
+
+        return new Response('Dia tachado correctamente con la id:' . $diaTachado->getId());
     }
 }

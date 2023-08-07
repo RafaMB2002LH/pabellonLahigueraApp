@@ -3,22 +3,8 @@
 {% block title %}Pabellón de Lahiguera - Inicio
 {% endblock %}
 
-{% block body %}
-	<div class="container">
-		<h1 class="text-center">¡Bienvenido al Pabellón de Lahiguera!</h1>
-		<p class="text-center">Disfruta de nuestras instalaciones y servicios</p>
-
-		<div class="row justify-content-center">
-			<div class="col-md-6">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">Reserva tu visita</h5>
-						<p class="card-text">Planifica tu visita y asegura tu entrada</p>
-						<a href="#" class="btn btn-primary">Reservar ahora</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
+{% block body %}{% endblock %}
+{% block navbar %}
+	<h1 class="text-center mb-4">Pabellon Municipal Juan Ramon Barragan</h1>
+	{{ parent() }}
 {% endblock %}

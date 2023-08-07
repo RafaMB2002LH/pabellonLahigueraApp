@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+	ERROR!
+{% endblock %}
+{% block navbar %}{% endblock %}
+{% block body %}
+	<div class="sinInicioDeSesion">
+		<div class="container d-flex justify-content-center align-items-center vh-100">
+			<div class="mensaje text-center">
+				<p class="mb-4 fs-1 fs-md-4">{{ mensajeError }}</p>
+				<div class="botones">
+					<a href="{{ path('app_main') }}" class="btn btn-secondary btn-lg btn-block mb-2 mb-md-0">Volver al inicio</a>
+					<a href="{{ path('app_login') }}" class="btn btn-primary btn-lg btn-block">Iniciar sesión</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

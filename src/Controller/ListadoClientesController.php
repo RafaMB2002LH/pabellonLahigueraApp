@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class ListadoClientesController extends AbstractController
 {
@@ -19,13 +20,18 @@ class ListadoClientesController extends AbstractController
     }
 
     #[Route('/listado/clientes', name: 'app_listado_clientes')]
-    public function index(): Response
+    public function index(Security $security): Response
     {
+        $user = $security->getUser();
 
-        $users = $this->usuarioRepository->findAll();
-        return $this->render('listado_clientes/index.html.twig', [
-            'controller_name' => 'ListadoClientesController',
-            'usuarios' => $users
-        ]);
+        if ($user == null) {
+            return $this->render('error/sinInicioDeSesion.html.twig', ['mensajeError' => 'Necesitas iniciar sesión para acceder a esta página.']);
+        } else {
+            $users = $this->usuarioRepository->findAll();
+            return $this->render('listado_clientes/index.html.twig', [
+                'controller_name' => 'ListadoClientesController',
+                'usuarios' => $users
+            ]);
+        }
     }
 }

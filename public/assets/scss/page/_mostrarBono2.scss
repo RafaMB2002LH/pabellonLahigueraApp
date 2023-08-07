@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Permanent+Marker&display=swap');
-
 .container-mostrar-bono-2 {
   background-color: #C2F6FF;
 
@@ -21,6 +19,15 @@
       justify-content: center;
       margin: 5px;
       border: 5px solid black;
+
+      &:hover {
+        // Estilos para el cuadrado al pasar el ratón por encima
+        // Puedes personalizar los estilos según tus preferencias
+
+        background-color: yellow;
+        cursor: pointer;
+        transform: scale(1.1); // Escala el cuadrado a un 120% del tamaño original
+      }
 
       &.tachado {
 
@@ -89,8 +96,10 @@
   }
 
   img {
-    width: 90px; /* Ajusta el ancho según tus necesidades */
-    height: auto; /* Para mantener la proporción de aspecto */
+    width: 90px;
+    /* Ajusta el ancho según tus necesidades */
+    height: auto;
+    /* Para mantener la proporción de aspecto */
   }
 
 }

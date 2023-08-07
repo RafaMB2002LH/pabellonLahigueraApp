@@ -58,9 +58,13 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'Usuario', targetEntity: Bono::class)]
     private Collection $bonos;
 
+    #[ORM\OneToMany(mappedBy: 'usuario', targetEntity: ReservaSpinning::class)]
+    private Collection $ReservaSpinning;
+
     public function __construct()
     {
         $this->bonos = new ArrayCollection();
+        $this->ReservaSpinning = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -225,5 +229,35 @@ class Usuario implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString()
     {
         return $this->Nombre . " " . $this->Apellidos;
+    }
+
+    /**
+     * @return Collection<int, ReservaSpinning>
+     */
+    public function getReservaSpinning(): Collection
+    {
+        return $this->ReservaSpinning;
+    }
+
+    public function addReservaSpinning(ReservaSpinning $reservaSpinning): static
+    {
+        if (!$this->ReservaSpinning->contains($reservaSpinning)) {
+            $this->ReservaSpinning->add($reservaSpinning);
+            $reservaSpinning->setUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservaSpinning(ReservaSpinning $reservaSpinning): static
+    {
+        if ($this->ReservaSpinning->removeElement($reservaSpinning)) {
+            // set the owning side to null (unless already changed)
+            if ($reservaSpinning->getUsuario() === $this) {
+                $reservaSpinning->setUsuario(null);
+            }
+        }
+
+        return $this;
     }
 }

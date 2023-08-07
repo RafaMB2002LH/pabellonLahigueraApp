@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reserva tu bici!
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script src="{{ asset('assets/js/spinning.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<div class="container container-spinning d-flex flex-column align-items-center">
+		<h1 class="mb-4">Gestión de Reserva de Bicicletas de Spinning</h1>
+		<div class="row">
+      {% for bicicleta in bicicletas %}
+        <div class="bike-icon">
+    <i class="fas fa-bicycle {% if bicicleta.estado == 'Broken' %}broken{% elseif bicicleta in bicicletasConReserva %}reserved{% else %}available{% endif %}" data-id="{{ bicicleta.id }}"></i>
+</div>
+      {% endfor %}
+    </div>
+
+		<!-- Modal para mostrar mensajes -->
+		<div id="modalMessage" class="modal modal-no-backdrop fade">
+			<div
+				class="modal-dialog modal-dialog-centered modal-lg">
+				<!-- Agregamos la clase modal-dialog-centered para centrar el modal -->
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Mensaje</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p id="modalText"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal para confirmar reserva -->
+		<div id="modalConfirm" class="modal fade">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Confirmar reserva</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>¿Estás seguro de reservar esta bicicleta?</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" id="btnNo" data-dismiss="modal">No</button>
+						<button type="button" class="btn btn-primary" id="btnReservar">Sí</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+{% endblock %}

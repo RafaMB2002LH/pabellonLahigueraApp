@@ -3,7 +3,15 @@
 @import "../css/bootstrap-grid.min.css";
 @import "../css/bootstrap-utilities.min.css";
 @import "../css/bootstrap.min.css";
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Permanent+Marker&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Dancing+Script&family=Merriweather:wght@300&family=Permanent+Marker&family=Victor+Mono:wght@200&display=swap");
+h1 {
+  font-family: "Merriweather";
+}
+
+p {
+  font-family: "Victor Mono";
+}
+
 .container-bono .card {
   display: flex;
   flex-direction: row;
@@ -87,6 +95,11 @@
   margin: 5px;
   border: 5px solid black;
 }
+.container-mostrar-bono-2 .card .cuadrado:hover {
+  background-color: yellow;
+  cursor: pointer;
+  transform: scale(1.1);
+}
 .container-mostrar-bono-2 .card .cuadrado.tachado::before, .container-mostrar-bono-2 .card .cuadrado.tachado::after {
   content: "";
   position: absolute;
@@ -136,8 +149,10 @@
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 .container-mostrar-bono-2 img {
-  width: 90px; /* Ajusta el ancho según tus necesidades */
-  height: auto; /* Para mantener la proporción de aspecto */
+  width: 90px;
+  /* Ajusta el ancho según tus necesidades */
+  height: auto;
+  /* Para mantener la proporción de aspecto */
 }
 
 .container-listaUsuarios .input-group-icon .input-group-text {
@@ -154,4 +169,149 @@
   font-size: 16px;
   font-weight: bold;
   color: black;
+}
+
+.navbar-custom {
+  /* Estilos para el botón de inicio de sesión */
+  /* Estilos para dispositivos móviles */
+  /* Estilos para centrar el título y la barra de menú */
+  /* Estilos para la barra de menú */
+  /* Estilos para los botones */
+  /* Estilos para el menú desplegable */
+  /* Estilos para dispositivos móviles */
+}
+.navbar-custom .login-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+@media (max-width: 767px) {
+  .navbar-custom .login-button {
+    position: static;
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+.navbar-custom body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.navbar-custom .menu {
+  text-align: center;
+  margin-top: 20px;
+}
+.navbar-custom .menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  /* Agregamos flexbox para centrar las opciones */
+  flex-wrap: wrap;
+  /* Permitimos que los botones se ajusten en varias líneas */
+  justify-content: center;
+  /* Centramos las opciones horizontalmente */
+}
+.navbar-custom .menu li {
+  margin: 0 10px;
+}
+.navbar-custom .btn {
+  padding: 10px 20px;
+  /* Aumentamos la altura del botón */
+  border: 2px solid black;
+  /* Borde del botón en color negro */
+  background-color: #C2F6FF;
+  /* Fondo del botón en color azul #007bff */
+  color: black;
+  /* Texto del botón en color negro */
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  flex: 1;
+  /* Ajustamos el tamaño de los botones automáticamente */
+  margin: 5px 5px 10px;
+  /* Espaciado entre los botones */
+  max-width: 200px;
+  /* Ancho máximo para evitar que se desborde en dispositivos móviles */
+  white-space: normal;
+  /* Permitimos que el texto se muestre en varias líneas */
+}
+.navbar-custom .btn:hover {
+  background-color: #FFFF00;
+  /* Fondo del botón en color amarillo al pasar el ratón */
+  border-color: black;
+  /* Borde del botón en color amarillo al pasar el ratón */
+  color: black;
+  /* Texto del botón en color negro al pasar el ratón */
+}
+.navbar-custom .dropdown-menu {
+  margin-top: 0;
+  background-color: #C2F6FF;
+  border: 2px solid black;
+  /* Fondo del desplegable en color azul #007bff */
+  min-width: 100%;
+}
+.navbar-custom .dropdown-item:hover {
+  background-color: #FFFF00;
+  /* Fondo de opción del desplegable en color amarillo al pasar el ratón */
+}
+@media (max-width: 991px) {
+  .navbar-custom .menu ul {
+    justify-content: center;
+    /* Centramos las opciones horizontalmente */
+  }
+  .navbar-custom .menu li {
+    flex: 1;
+    /* Ajustamos el tamaño de los botones automáticamente */
+    max-width: 150px;
+    /* Ancho máximo para evitar desbordamientos */
+    height: 120px;
+    /* Altura fija para los botones en dispositivos móviles */
+  }
+}
+
+.container-spinning {
+  /* Estilos adicionales para el modal de confirmación en dispositivos móviles */
+}
+.container-spinning .bike-icon {
+  text-align: center;
+  font-size: 48px;
+  line-height: 1;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  transition: color 0.3s ease;
+}
+.container-spinning .bike-icon:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.container-spinning .bike-icon .available {
+  color: green;
+}
+.container-spinning .bike-icon .reserved {
+  color: red;
+}
+.container-spinning .bike-icon .broken {
+  color: orange;
+}
+.container-spinning .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@media (max-width: 767px) {
+  .container-spinning #modalMessage .modal-dialog {
+    max-width: 90%;
+  }
+  .container-spinning #modalMessage .modal-body {
+    font-size: 16px;
+  }
+}
+@media (max-width: 576px) {
+  .container-spinning #modalConfirm .modal-dialog {
+    max-width: 90%;
+  }
 }/*# sourceMappingURL=main.css.map */

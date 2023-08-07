@@ -1,26 +1,105 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>
-			{% block title %}Welcome!
-			{% endblock %}
-		</title>
-		<link
-		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-		{% block stylesheets %}
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-			<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-		{% endblock %}
 
-		{% block javascripts %}
-			<script src="{{ asset('assets/js/jquery-3.7.0.min.js') }}"></script>
-			<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-			<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+<head>
+	<meta charset="UTF-8">
+	<title>
+		{% block title %}Welcome!
 		{% endblock %}
-	</head>
-	<body>
-		{% block body %}{% endblock %}
-	</body>
+	</title>
+	<link rel="icon"
+		href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+	{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+	{% block stylesheets %}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+	{% endblock %}
+
+	{% block javascripts %}
+	<script src="{{ asset('assets/js/jquery-3.7.0.min.js') }}"></script>
+	<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+	<script src="{{ asset('assets/js/navbar.js') }}"></script>
+	{% endblock %}
+</head>
+
+<body>
+	{% block navbar %}
+	<div class="navbar-custom container mt-5">
+		{% if app.user %}
+		<div class="login-button">
+			<a href="{{path('app_logout')}}" class="btn btn-primary">Cerrar sesion</a>
+		</div>
+		{% else %}
+		<div class="login-button">
+			<a href="{{path('app_login')}}" class="btn btn-primary">Iniciar sesión</a>
+		</div>
+		{% endif %}
+		<div class="menu">
+			<ul class="nav">
+			{% if app.request.attributes.get('_route') != 'app_main' %}
+				<li class="nav-item">
+					<a class="nav-link btn" href="{{path('app_main')}}">Inicio</a>
+				</li>
+				{% endif %}
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle btn" href="#" id="alquilarPistasDropdown" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Alquilar pistas
+					</a>
+					<div class="dropdown-menu" aria-labelledby="alquilarPistasDropdown">
+						<a class="dropdown-item" href="#">Fútbol 11</a>
+						<a class="dropdown-item" href="#">Fútbol 7</a>
+						<a class="dropdown-item" href="#">Fútbol sala</a>
+						<a class="dropdown-item" href="#">Pádel</a>
+						<a class="dropdown-item" href="#">Tenis</a>
+						<a class="dropdown-item" href="#">Bádminton</a>
+						<a class="dropdown-item" href="#">Baloncesto</a>
+					</div>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle btn" href="#" id="bonoDropdown" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Bonos
+					</a>
+					<div class="dropdown-menu" aria-labelledby="bonoDropdown">
+					
+						{% if app.user and app.user.roles[0] != 'ROLE_ADMIN' %}
+							<a class="dropdown-item" href="{{path('app_bono3')}}">Gimnasio</a>
+						{% else %}
+							<a class="dropdown-item" href="{{path('app_listado_clientes')}}">Gimnasio</a>
+						{% endif %}
+						<a class="dropdown-item" href="#">Pádel</a>
+						<a class="dropdown-item" href="#">Tenis</a>
+						<a class="dropdown-item" href="#">Spinning</a>
+					</div>
+				</li>
+				{% if app.user and app.user.roles[0] == 'ROLE_ADMIN' %}
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle btn" href="#" id="otrasActividadesDropdown" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Otras actividades
+					</a>
+					<div class="dropdown-menu" aria-labelledby="otrasActividadesDropdown">
+						<a class="dropdown-item" href="#">Zumba</a>
+						<a class="dropdown-item" href="#">CrossFit</a>
+						<a class="dropdown-item" href="#">Body Pump</a>
+						<a class="dropdown-item" href="#">Gimnasia del mayor</a>
+					</div>
+				</li>
+				{% endif %}
+				{% if app.request.attributes.get('_route') != 'app_spinning_reserva' %}
+				<li class="nav-item">
+					<a class="nav-link btn" href="{{path('app_spinning_reserva')}}">Reserva bici spinning</a>
+				</li>
+				{% endif %}
+
+
+			</ul>
+		</div>
+	</div>
+	{% endblock %}
+	{% block body %}{% endblock %}
+</body>
+
 </html>

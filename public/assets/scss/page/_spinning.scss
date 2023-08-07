@@ -1,0 +1,57 @@
+.container-spinning {
+
+    .bike-icon {
+        text-align: center;
+        font-size: 48px;
+        line-height: 1;
+        width: 100px; // Establece un ancho para cada bicicleta
+        height: 100px; // Establece una altura para cada bicicleta
+        margin: 10px;
+        transition: color 0.3s ease; // Agregamos una transición de color para el cambio suave
+
+        &:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+
+        // Estilos para los diferentes estados del icono
+        .available {
+            color: green;
+        }
+
+        .reserved {
+            color: red;
+        }
+
+        .broken {
+            color: orange;
+        }
+    }
+
+    .row {
+        display: flex; // Establece la fila como un contenedor flexible
+        flex-wrap: wrap; // Hace que los elementos se desborden a la siguiente fila
+        justify-content: center; // Centra los elementos horizontalmente
+    }
+
+    // Estilos adicionales para el modal en dispositivos móviles
+    @media (max-width: 767px) {
+        // ...
+
+        #modalMessage .modal-dialog {
+            max-width: 90%;
+        }
+
+        #modalMessage .modal-body {
+            font-size: 16px;
+        }
+    }
+
+    /* Estilos adicionales para el modal de confirmación en dispositivos móviles */
+    @media (max-width: 576px) {
+        #modalConfirm .modal-dialog {
+            max-width: 90%;
+        }
+    }
+
+}
