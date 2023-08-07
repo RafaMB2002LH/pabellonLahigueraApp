@@ -34,8 +34,7 @@ $(document).ready(function () {
                 $(".bike-icon i[data-id='" + response.idBicicleta + "']").addClass("reserved");
             },
             error: function (error) {
-                // Manejar errores
-                console.log(error);
+                showModalMessage(error.responseJSON.error);
             }
         });
 
